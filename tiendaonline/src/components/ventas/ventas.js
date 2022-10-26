@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import './ventas.css';
 
+
 /*
 "fecha": "27/09/2022",
 "idCliente": "111111",
@@ -16,14 +17,16 @@ import './ventas.css';
 */
 
 export function VentasList({fecha, idCliente, idVenta, valor, confirmado, detalleCompra}){
-    return <div >
-                <h2>{fecha}</h2>
-                <p>{idCliente}</p>
-                <p>{idVenta}</p>
-                <p>{valor}</p>
-                <p>{confirmado}</p>
-                <p>{detalleCompra.idProducto}</p>
-                <p>{detalleCompra.cantidad}</p>
+    return <div>
+                <table>
+                    <tr>
+                        <td><h2>{fecha}</h2></td>
+                        <td><p>{idCliente}</p></td>
+                        <td><p>{idVenta}</p></td>
+                        <td><p>{valor}</p></td>
+                        <td><p>{confirmado}</p></td>
+                    </tr>
+                </table>
             </div>
 }
 

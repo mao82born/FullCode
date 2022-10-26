@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {productos} from '../../data/dataProductos.js';
 import {ProductosList} from '../productos/productos.js';
+import Header from '../header/Header';
 
 /*      
 id: "GGOEAFKA087499",
@@ -14,7 +15,9 @@ precio
 
 function App() {
   return (
-    <div className="App">
+    
+    <div className="wrapper">
+      <Header></Header>
       <h1>Productos</h1>
       {productos.map(h => (
           <ProductosList 

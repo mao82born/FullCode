@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.wrapper h1 {
+    text-align: center;
+    width: 100%;
+}
+
+.imgProducto {
+    width: 200px;
+    border-radius: 4px 4px 0 0;
+    /*
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(182, 13, 197);
+    padding: 17px 17px;
+    */
+    text-align: center;
+
+}
