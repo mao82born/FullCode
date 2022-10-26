@@ -12,13 +12,15 @@ precio
 */
 
 export function ProductosList({id, urlImagen, nombre, descripcion, features, precio}){
-    return <div>
-            <h2>{nombre}</h2>
-            <img src={urlImagen}></img>
-            <p>{nombre}</p>
-            <p>{descripcion}</p>
-            <p>{features}</p>
-            <p>{precio}</p>
+    return <div className="imgProducto">
+            
+                <h2>{nombre}</h2>
+                <img src={urlImagen} className="imgProducto"></img>
+                <p>{nombre}</p>
+                <p>{descripcion}</p>
+                <p>{features}</p>
+                <p>{precio}</p>
+            
     </div>
 }
 

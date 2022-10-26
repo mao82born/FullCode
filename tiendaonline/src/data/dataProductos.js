@@ -10,9 +10,17 @@ export const productos = [
   {
     "id": "GGOEAFKA087599",
     "urlImagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Rubik's_cube.svg/240px-Rubik's_cube.svg.png",
-    "name": "Android Large Removable Sticker Sheet",
-    "description": "Show your quirky side by placing these fun Android stickers on your personal belongings.",
+    "nombre": "Android Large Removable Sticker Sheet",
+    "descripcion": "Show your quirky side by placing these fun Android stickers on your personal belongings.",
     "features": "<p>Android Stickers</p>\n<p>White Colored Sticker Sheet</p>",
-    "price": "2.99"
+    "precio": "2.99"
+  },
+  {
+    "id": "GGO87599",
+    "urlImagen": "https://upload.wikimedia.org/wikipedia/it/thumb/4/43/Bulbasaur.png/260px-Bulbasaur.png",
+    "nombre": "Bulbasaur",
+    "descripcion": "Show your quirky side by placing these fun Android stickers on your personal belongings.",
+    "features": "<p>Android Stickers</p>\n<p>White Colored Sticker Sheet</p>",
+    "precio": "2.99"
   }
     ]

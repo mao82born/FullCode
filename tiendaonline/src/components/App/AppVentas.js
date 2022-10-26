@@ -2,6 +2,7 @@ import React from "react";
 import './App.css';
 import { ventas } from "../../data/dataVentas";
 import { VentasList } from "../ventas/ventas";
+import Header from "../header/Header";
 
 /*
 "fecha": "27/09/2022",
@@ -18,7 +19,8 @@ import { VentasList } from "../ventas/ventas";
 
 function Ventas(){
     return(
-        <div>
+        <div className="App">
+            <Header></Header>
             <h1>Ventas</h1>
             {ventas.map(h => (
                 <VentasList 
