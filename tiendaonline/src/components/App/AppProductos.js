@@ -3,7 +3,6 @@ import './App.css';
 import {productos} from '../../data/dataProductos.js';
 import {ProductosList} from '../productos/productos.js';
 import Header from '../header/Header';
-import { Login } from '../login/login';
 
 /*      
 id: "GGOEAFKA087499",
@@ -14,13 +13,27 @@ características: "<p>8 Android stickers</p>\n<p>White colored sticker sheet</p>
 precio
 */
 
-function App() {
+function Productos() {
   return (
     <React.Fragment>
       <Header></Header> 
-      <Login></Login>
+      <div className="wrapper">
+        <h1>Productos</h1>
+        {productos.map(h => (
+            <ProductosList 
+              key = {h.name}
+              id = {h.id}
+              urlImagen = {h.urlImagen}
+              nombre = {h.nombre}
+              descripcion = {h.descripcion}
+              features = {h.features}
+              precio = {h.precio}
+            />
+          ))
+        }
+      </div>
     </React.Fragment>
   );
 }
 
-export default App;
+export default Productos;
