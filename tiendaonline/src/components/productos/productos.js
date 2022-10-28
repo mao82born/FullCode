@@ -20,6 +20,7 @@ export function ProductosList({id, urlImagen, nombre, descripcion, features, pre
                 <p>{descripcion}</p>
                 <p>{features}</p>
                 <p>{precio}</p>
+                <button>Comprar</button>
             
     </div>
 }
