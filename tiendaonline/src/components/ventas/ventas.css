@@ -1,0 +1,8 @@
+.border {
+    table-layout: auto; width: 60%;
+    border-collapse: collapse;
+}
+
+tr, td, th{ 
+    border: 1px solid grey;
+}

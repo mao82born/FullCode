@@ -1,20 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './Header.css';
 
 
 const Header = () => {
     return (
-        <nav>
-            <div>
-            <ul>
-				<li><a href="#">Inicio</a></li>
-				<li><a href="#">Productos</a></li>
-				<li><a href="#">Ventas</a></li>
-				<li><a href="#">Bootcamps</a></li>
-				<li><a href="#">Contacto</a></li>
-			</ul>
-            </div>
-        </nav>
+        <React.Fragment>
+            <section>
+                <nav>
+                    <div>
+                    <ul>
+                        <li>
+                            <Link to='/'>Inicio</Link>
+                        </li>
+                        <li>
+                            <Link to='/Productos'>Productos</Link>
+                        </li>
+                        <li>
+                        <Link to='/Ventas'>Ventas</Link>
+                        </li>
+                        <li><a href="#">Bootcamps</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                    </div>
+                </nav>
+            </section>
+
+        </React.Fragment>
     )
 }
 

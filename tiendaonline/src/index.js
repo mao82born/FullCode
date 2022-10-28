@@ -10,6 +10,7 @@ import './index.css';
 import App from './components/App/App';
 import Ventas from './components/App/AppVentas';
 import Header from './components/header/Header';
+import Productos from './components/App/AppProductos';
 /*
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,8 +23,8 @@ const rootElement = document.getElementById('root');
 render(
     <BrowserRouter>
         <Routes>
-            <Route path='/' element={<Header />} />
-            <Route path="App" element={<App />} />
+            <Route path='/' element={<App />} />
+            <Route path='Productos' element={<Productos />} />
             <Route path="ventas" element={<Ventas />} />
         </Routes>
     </BrowserRouter>,
