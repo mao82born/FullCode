@@ -3,6 +3,7 @@ import './App.css';
 import { ventas } from "../../data/dataVentas";
 import { VentasList } from "../ventas/ventas";
 import Header from "../header/Header";
+import { Footer } from '../footer/footer.js';
 
 
 /*
@@ -36,6 +37,8 @@ function Ventas(){
                     />
                 ))}
             </div>
+            <br/>
+            <Footer></Footer>
         </React.Fragment>
     )
 }

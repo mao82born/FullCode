@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import {productos} from '../../data/dataProductos.js';
-import {ProductosList} from '../productos/productos.js';
 import Header from '../header/Header';
 import { Login } from '../login/login';
+import { Footer } from '../footer/footer.js';
 
 /*      
 id: "GGOEAFKA087499",
@@ -19,6 +18,7 @@ function App() {
     <React.Fragment>
       <Header></Header> 
       <Login></Login>
+      <Footer></Footer>
     </React.Fragment>
   );
 }

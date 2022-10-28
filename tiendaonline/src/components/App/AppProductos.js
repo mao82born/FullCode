@@ -3,6 +3,7 @@ import './App.css';
 import {productos} from '../../data/dataProductos.js';
 import {ProductosList} from '../productos/productos.js';
 import Header from '../header/Header';
+import { Footer } from '../footer/footer.js';
 
 /*      
 id: "GGOEAFKA087499",
@@ -32,6 +33,7 @@ function Productos() {
           ))
         }
       </div>
+      <Footer></Footer>
     </React.Fragment>
   );
 }

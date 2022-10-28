@@ -17,24 +17,26 @@ import './ventas.css';
 */
 
 export function VentasList({fecha, idCliente, idVenta, valor, confirmado, detalleCompra}){
-    return <div>
-                <table className="border">
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Id cliente</th>
-                        <th>Id venta</th>
-                        <th>Valor</th>
-                        <th>Confirmación</th>
-                    </tr>
-                    <tr>
-                        <td>{fecha}</td>
-                        <td>{idCliente}</td>
-                        <td>{idVenta}</td>
-                        <td>{valor}</td>
-                        <td>{confirmado}</td>
-                    </tr>
-                </table>
-            </div>
+    return <React.Fragment>
+                <div>
+                    <table className="border">
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Id cliente</th>
+                            <th>Id venta</th>
+                            <th>Valor</th>
+                            <th>Confirmación</th>
+                        </tr>
+                        <tr>
+                            <td>{fecha}</td>
+                            <td>{idCliente}</td>
+                            <td>{idVenta}</td>
+                            <td>{valor}</td>
+                            <td>{confirmado}</td>
+                        </tr>
+                    </table>
+                </div>
+            </React.Fragment>
 }
 
 VentasList.prototype = {
