@@ -16,39 +16,40 @@ import './ventas.css';
 }
 */
 
-export function VentasList({fecha, idCliente, idVenta, valor, confirmado, detalleCompra}){
+export function VentasList({ventas}) {
     return <React.Fragment>
-                <div>
-                    <table className="border">
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Id cliente</th>
-                            <th>Id venta</th>
-                            <th>Valor</th>
-                            <th>Confirmación</th>
-                        </tr>
-                        <tr>
-                            <td>{fecha}</td>
-                            <td>{idCliente}</td>
-                            <td>{idVenta}</td>
-                            <td>{valor}</td>
-                            <td>{confirmado}</td>
-                        </tr>
-                    </table>
-                </div>
-            </React.Fragment>
+        <div>
+            <table className="border">
+
+                <tr>
+                    <th>Fecha</th>
+                    <th>Id cliente</th>
+                    <th>Id venta</th>
+                    <th>Valor</th>
+                    <th>Confirmación</th>
+                </tr>
+                {ventas.map((item, index) => {
+                    return (
+                        
+                            <tr>
+                                <td>{item.fecha}</td>
+                                <td>{item.idCliente}</td>
+                                <td>{item.idVenta}</td>
+                                <td>{item.valor}</td>
+                                <td>{item.confirmado === true ?"Verdadero":"Falso"}</td>
+                            </tr>
+                       
+                    )
+                })}
+
+            </table>
+        </div>
+    </React.Fragment>
 }
 
+/*
 VentasList.prototype = {
-    detalleCompra: PropTypes.shape({
-        idProducto: PropTypes.string,
-        cantidad: PropTypes.number
-    }),
-    fecha: PropTypes.string.isRequired,
-    idCliente: PropTypes.number.isRequired,
-    idVenta: PropTypes.number.isRequired,
-    valor: PropTypes.number.isRequired,
-    confirmado: PropTypes.bool.isRequired
+    
 }
 
 VentasList.defaultProps = {
@@ -56,4 +57,4 @@ VentasList.defaultProps = {
         idProducto: 'No hay información',
         cantidad: 0
     }
-}
+}*/
