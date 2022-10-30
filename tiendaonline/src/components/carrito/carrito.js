@@ -1,54 +1,44 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import './ventas.css';
+import './carrito.css';
 import { Table } from "react-bootstrap";
+import Carrito from "../App/AppCarrito";
 
 
 /*
-"fecha": "27/09/2022",
-"idCliente": "111111",
-"idVenta": "123",
-"valor": 35,
-"confirmado": true,
-"detalleCompra": [
-{
-    "idProducto": "GGOEAFKA087599",
-    "cantidad": 2
-}
+        "urlImagen": "https://i.blogs.es/27b569/telefono/450_1000.jpeg",
+        "nombre": "Android Small Removable Sticker Sheet",
+        "cantidad": 3,
+        "precio": "9"
 */
 
-export function VentasList({ventas}) {
+export function CarritoList({carro}) {
     return <React.Fragment>
             <div className="center">
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr className="color">
-                        <th>Fecha</th>
-                        <th>Id venta</th>
+                        <th>Imagen</th>
+                        <th>Cantidad</th>
+                        <th>Producto</th>
                         <th>Valor</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {ventas.map((item) => {
+                    {carro.map((item) => {
                         return (
-                            
                                 <tr>
-                                    <td>{item.fecha}</td>
-                                    <td>{item.idVenta}</td>
-                                    <td>{item.valor}</td>
+                                    <td><img src={item.urlImagen} className="size"></img></td>
+                                    <td>{item.nombre}</td>
+                                    <td>{item.cantidad}</td>
+                                    <td>{item.precio}</td>
                                 </tr>
-                        
                         )
                     })}
                     <tr>
                         <td></td>
                         <td>Total</td>
-                        <td>{ventas.map((item) => {
-                            let suma = 0
-                            return (
-                                suma = suma + parseInt(item.valor)
-                            )
-                        })}</td>
+                        <td>0</td>
                     </tr>
                 </tbody>
             </Table>

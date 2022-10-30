@@ -27,6 +27,7 @@ function Ventas() {
                 <h1>Ventas</h1>
                 <VentasList
                     ventas={ventas}
+                    
                 />
             </div>
             <br />

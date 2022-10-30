@@ -11,16 +11,20 @@ const Header = () => {
                     <div>
                     <ul>
                         <li>
-                            <Link to='/'>Inicio</Link>
+                            <Link to='/' className="linkk">Inicio</Link>
                         </li>
                         <li>
-                            <Link to='/Productos'>Productos</Link>
+                            <Link to='/productos' className="linkk">Productos</Link>
                         </li>
                         <li>
-                        <Link to='/Ventas'>Ventas</Link>
+                            <Link to='/ventas' className="linkk">Ventas</Link>
                         </li>
-                        <li><a href="#">Bootcamps</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li>
+                            <Link to='/modificarProd' className="linkk">Modificar</Link>
+                        </li>
+                        <li>
+                            <Link to='/carrito' className="linkk">Carrito</Link>
+                        </li>
                     </ul>
                     </div>
                 </nav>

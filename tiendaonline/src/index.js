@@ -9,8 +9,11 @@ import {
 import './index.css';
 import App from './components/App/App';
 import Ventas from './components/App/AppVentas';
-import Header from './components/header/Header';
 import Productos from './components/App/AppProductos';
+import Carrito from './components/App/AppCarrito';
+import ModificarProd from './components/App/AppModProd';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 /*
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,9 +26,11 @@ const rootElement = document.getElementById('root');
 render(
     <BrowserRouter>
         <Routes>
-            <Route path='/' element={<App />} />
+            <Route index element={<App />} />
             <Route path='Productos' element={<Productos />} />
             <Route path="ventas" element={<Ventas />} />
+            <Route path="Carrito" element={<Carrito />} />
+            <Route path="modificarProd" element={<ModificarProd />} />
         </Routes>
     </BrowserRouter>,
     rootElement
