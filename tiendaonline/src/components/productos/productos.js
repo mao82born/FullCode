@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import './productos.css';
+
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image'
+import Container from 'react-bootstrap/Container';
+
 
 /*      
 id: "GGOEAFKA087499",
@@ -18,27 +21,29 @@ precio
 
 export function ProductosList({ productos }) {
   return (
-    <Row xs={1} md={4} className="g-4">
-      {productos.map((item) => {
-        return (
-          <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={item.urlImagen} className="imgProducto"/>
-              <Card.Body>
-                <Card.Title>{item.nombre}</Card.Title>
-                <Card.Text>
-                  {item.precio}<br />
-                  Disponible: {item.cantidad} unidades
-                </Card.Text>
-                <div  className="center">
-                  <Button variant="outline-dark" >Comprar</Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        );
-      })}
-    </Row>
+    <Container>
+      <Row xs={1} md={4} className="g-4">
+        {productos.map((item) => {
+          return (
+            <Col>
+              <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={item.urlImagen} className="imgProducto" />
+                <Card.Body>
+                  <Card.Title>{item.nombre}</Card.Title>
+                  <Card.Text>
+                    {item.precio}<br />
+                    Disponible: {item.cantidad}
+                  </Card.Text>
+                  <div className="center">
+                    <Button variant="outline-dark" >Comprar</Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          );
+        })}
+      </Row>
+    </Container>
   )
 }
 

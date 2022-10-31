@@ -3,6 +3,8 @@ import './carrito.css';
 import { Table } from "react-bootstrap";
 import Carrito from "../App/AppCarrito";
 
+import Container from 'react-bootstrap/Container';
+
 
 /*
         "urlImagen": "https://i.blogs.es/27b569/telefono/450_1000.jpeg",
@@ -11,38 +13,41 @@ import Carrito from "../App/AppCarrito";
         "precio": "9"
 */
 
-export function CarritoList({carro}) {
+export function CarritoList({ carro }) {
     return <React.Fragment>
-            <div className="center">
-            <Table striped bordered hover size="sm">
-                <thead>
-                    <tr className="colortr">
-                        <th>Imagen</th>
-                        <th>Cantidad</th>
-                        <th>Producto</th>
-                        <th>Valor</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {carro.map((item) => {
-                        return (
+        <Container>
+            <div>
+                <Table bordered size="sm" className="table tabletr">
+                    <thead>
+                        <tr className="colortr">
+                            <th>Imagen</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Valor</th>
+                            <th >Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {carro.map((item) => {
+                            return (
                                 <tr>
                                     <td><img src={item.urlImagen} className="size"></img></td>
-                                    <td>{item.nombre}</td>
-                                    <td>{item.cantidad}</td>
-                                    <td>{item.precio}</td>
+                                    <td >{item.nombre}</td>
+                                    <td >{item.cantidad}</td>
+                                    <td >{item.precio}</td>
                                 </tr>
-                        )
-                    })}
-                    <tr>
-                        <td></td>
-                        <td>Total</td>
-                        <td>0</td>
-                    </tr>
-                </tbody>
-            </Table>
+                            )
+                        })}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Total</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </Table>
             </div>
+        </Container>
     </React.Fragment>
 }
 

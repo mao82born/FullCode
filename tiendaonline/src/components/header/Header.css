@@ -1,3 +1,4 @@
+/*
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 body {
@@ -41,7 +42,7 @@ li {
 :first-child {
 	margin-left: 0;
 }
-
+*/
 
 .linkk {
 	color: rgb(241, 241, 241);
@@ -50,8 +51,9 @@ li {
 }
 
 .linkk:hover {
-	/*font-size: 15pt;*/
+	/*font-size: 15pt;
 	letter-spacing: .1em;
+	*/
 	color: rgb(241, 241, 241);
 	text-decoration: none;
 

@@ -11,26 +11,24 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 const Header = () => {
     return (
         <React.Fragment>
-            <Navbar bg="light" expand="lg">
-                <Container  className="colorbg">
-                    <Navbar.Brand href="/" className="text">FullGames</Navbar.Brand>
+            <Navbar bg="" expand="lg" className="colorbg">
+                    <Navbar.Brand href="/" className="">FullCode</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/">Inicio</Nav.Link>
-                            <NavDropdown title="Administrador" id="basic-nav-dropdown">
+                            <Nav.Link href="/" className="">Inicio</Nav.Link>
+                            <NavDropdown title="Administrador" id="basic-nav-dropdown" className="">
                                 <NavDropdown.Item href="/ventas">Ventas</NavDropdown.Item>
                                 <NavDropdown.Item href="/productosAdmin">Productos</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="/modificarProd">Modificar Producto</NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Clientes" id="basic-nav-dropdown">
+                            <NavDropdown title="Clientes" id="basic-nav-dropdown" className="linkk">
                                 <NavDropdown.Item href="/productos">Productos</NavDropdown.Item>
                                 <NavDropdown.Item href="/carrito">Carrito</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
-                </Container>
             </Navbar>
         </React.Fragment>
     )

@@ -4,6 +4,8 @@ import './ventas.css';
 import { Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
+import Container from 'react-bootstrap/Container';
+
 
 /*
 "fecha": "27/09/2022",
@@ -20,8 +22,9 @@ import { useState, useEffect } from "react";
 
 export function VentasList({ventas}) {
     return <React.Fragment>
+        <Container>
             <div className="center">
-            <Table striped bordered hover size="sm">
+            <Table striped bordered hover size="sm" className="table">
                 <thead>
                     <tr className="color">
                         <th>Fecha</th>
@@ -56,6 +59,7 @@ export function VentasList({ventas}) {
                 </tbody>
             </Table>
             </div>
+        </Container>
     </React.Fragment>
 }
 /*
