@@ -6,3 +6,12 @@
 tr, td, th{ 
     border: 1px solid grey;
 }
+
+.center {
+    justify-content: center;
+}
+
+.color {
+    background-color: #cd73ea;
+    
+}

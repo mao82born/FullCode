@@ -16,7 +16,7 @@ características: "<p>8 Android stickers</p>\n<p>White colored sticker sheet</p>
 precio
 */
 
-export function ProductosList({ productos }) {
+export function ProductosListAdmin({ productos }) {
   return (
     <Row xs={1} md={4} className="g-4">
       {productos.map((item) => {
@@ -30,9 +30,6 @@ export function ProductosList({ productos }) {
                   {item.precio}<br />
                   Disponible: {item.cantidad} unidades
                 </Card.Text>
-                <div  className="center">
-                  <Button variant="outline-dark" >Comprar</Button>
-                </div>
               </Card.Body>
             </Card>
           </Col>
