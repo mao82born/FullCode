@@ -18,24 +18,31 @@ function Productos() {
   return (
     <React.Fragment>
       <Header></Header> 
-      <div className="wrapper">
-        <h1>Productos</h1>
-        {productos.map(h => (
-            <ProductosList 
-              key = {h.name}
-              id = {h.id}
-              urlImagen = {h.urlImagen}
-              nombre = {h.nombre}
-              descripcion = {h.descripcion}
-              features = {h.features}
-              precio = {h.precio}
-            />
-          ))
-        }
-      </div>
+      
+        <h1 className='App'>Productos</h1><br />
+        <ProductosList
+          productos = {productos}
+        />
+      
       <Footer></Footer>
     </React.Fragment>
   );
 }
 
 export default Productos;
+
+
+/**
+ * {productos.map(h => (
+            <ProductosList 
+            key = {h.name}
+            id = {h.id}
+            urlImagen = {h.urlImagen}
+            nombre = {h.nombre}
+            descripcion = {h.descripcion}
+            cantidad = {h.cantidad}
+            precio = {h.precio}
+            />
+          ))
+        }
+ */

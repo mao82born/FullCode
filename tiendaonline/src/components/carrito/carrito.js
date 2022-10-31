@@ -16,7 +16,7 @@ export function CarritoList({carro}) {
             <div className="center">
             <Table striped bordered hover size="sm">
                 <thead>
-                    <tr className="color">
+                    <tr className="colortr">
                         <th>Imagen</th>
                         <th>Cantidad</th>
                         <th>Producto</th>

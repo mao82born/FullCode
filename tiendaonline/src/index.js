@@ -12,6 +12,7 @@ import Ventas from './components/App/AppVentas';
 import Productos from './components/App/AppProductos';
 import Carrito from './components/App/AppCarrito';
 import ModificarProd from './components/App/AppModProd';
+import ProductosAdmin from './components/App/AppProductosAdmin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 /*
@@ -28,6 +29,7 @@ render(
         <Routes>
             <Route index element={<App />} />
             <Route path='Productos' element={<Productos />} />
+            <Route path='ProductosAdmin' element={<ProductosAdmin />} />
             <Route path="ventas" element={<Ventas />} />
             <Route path="Carrito" element={<Carrito />} />
             <Route path="modificarProd" element={<ModificarProd />} />
