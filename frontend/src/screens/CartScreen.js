@@ -1,0 +1,53 @@
+import { useContext } from 'react';
+import { Store } from '../Store';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import MessageBox from '../components/MessageBox';
+import { ListGroup } from 'react-bootstrap/ListGroup';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+
+export function CartScreen() {
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const {
+    cart: { cartItems },
+  } = state;
+
+  return (
+    <div>
+      <h1>Carrito de compras</h1>
+      <Row>
+        <Col md={8}>
+          {cartItems.length === 0 ? (
+            <MessageBox>
+              El carrito está vacio. <Link to="/">Ir a comprar</Link>
+            </MessageBox>
+          ) : (
+            <ListGroup>
+              {cartItems.map((item) => (
+                <ListGroup.Item key={item._id}>
+                  <Row className="align-items-center">
+                    <Col md={4}>
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="img-fluid rounded img-thumbnail"
+                      ></img>{' '}
+                      <Link to={`/product/${item._id}`}>{item.name}</Link>
+                    </Col>
+                    <Col md={3}>
+                      <Button variant="light" disabled={item.quantity === 1}>
+                        <i className="fas fa-minus-circle"></i>
+                      </Button>{' '}
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          )}
+        </Col>
+        <Col md={4}></Col>
+      </Row>
+    </div>
+  );
+}
