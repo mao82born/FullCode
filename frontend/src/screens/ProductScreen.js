@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { useEffect, useReducer } from 'react';
+import { useContext, useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Store } from '../Store';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -42,6 +43,14 @@ export function ProductScreen() {
     fetchData();
   }, [id]);
 
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const addToCartHandler = () => {
+    ctxDispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity: 1 },
+    });
+  };
+
   return loading ? (
     <div>Cargando...</div>
   ) : error ? (
@@ -66,7 +75,9 @@ export function ProductScreen() {
             <ListGroup.Item>Stock: {product.countInStock}</ListGroup.Item>
             <ListGroup.Item>
               <div className="d-grid">
-                <Button variant="primary">Añadir al carrito</Button>
+                <Button onClick={addToCartHandler} variant="primary">
+                  Añadir al carrito
+                </Button>
               </div>
             </ListGroup.Item>
           </ListGroup>
