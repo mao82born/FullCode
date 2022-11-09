@@ -1,0 +1,1 @@
+mongodb+srv://analytics:analytics-password@mflix.47ta7mr.mongodb.net/fullgames?retryWrites=true&w=majority
