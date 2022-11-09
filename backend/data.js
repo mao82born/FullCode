@@ -47,7 +47,7 @@ export const data = {
       name: 'Procyon lotor',
       description:
         'diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue',
-      countInStock: 3,
+      countInStock: 0,
       price: 7.98,
     },
     {
