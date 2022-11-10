@@ -12,6 +12,10 @@ import { useContext } from 'react';
 import { Store } from './Store';
 import { CartScreen } from './screens/CartScreen';
 import { SigninScreen } from './screens/SigninScreen';
+import NewProductScreen from './screens/NewProductScreen';
+import AdminRoute from './components/AdminRoute';
+import { ProductListScreen } from './screens/ProductListScreen';
+import VentasScreen from './screens/SalesScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -62,6 +66,17 @@ function App() {
                     Ingresar
                   </Link>
                 )}
+                <NavDropdown title="Admin" id="basic-nav-dropdown">
+                  <LinkContainer to="/admin/newproduct">
+                    <NavDropdown.Item>Nuevo producto</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/admin/productlist">
+                    <NavDropdown.Item>Lista de productos</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/admin/saleslist">
+                    <NavDropdown.Item>Lista de ventas</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
               </Nav>
             </Container>
           </Navbar>
@@ -72,6 +87,31 @@ function App() {
               <Route path="/product/:refnum" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
+              {/*Admin Routes */}
+              <Route
+                path="/admin/newproduct"
+                element={
+                  <AdminRoute>
+                    <NewProductScreen />
+                  </AdminRoute>
+                }
+              ></Route>
+              <Route
+                path="/admin/productlist"
+                element={
+                  <AdminRoute>
+                    <ProductListScreen />
+                  </AdminRoute>
+                }
+              ></Route>
+              <Route
+                path="/admin/saleslist"
+                element={
+                  <AdminRoute>
+                    <VentasScreen />
+                  </AdminRoute>
+                }
+              ></Route>
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>

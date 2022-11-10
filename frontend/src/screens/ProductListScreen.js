@@ -3,6 +3,7 @@ import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Product } from '../components/Product';
+import { ProductList } from '../components/ProductList';
 //import logger from 'use-reducer-logger';
 //import { data } from '../data';
 
@@ -19,7 +20,7 @@ const reducer = (state, action) => {
   }
 };
 
-export function HomeScreen() {
+export function ProductListScreen() {
   const [{ loading, error, products }, dispatch] = useReducer(reducer, {
     products: [],
     loading: true,
@@ -51,7 +52,7 @@ export function HomeScreen() {
           <Row>
             {products.map((product) => (
               <Col key={product.refnum} sm={6} md={4} lg={3} className="mb-3">
-                <Product product={product}></Product>
+                <ProductList product={product}></ProductList>
               </Col>
             ))}
           </Row>
