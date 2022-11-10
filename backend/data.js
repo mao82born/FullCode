@@ -1,7 +1,7 @@
 export const data = {
   products: [
     {
-      _id: '0845474790',
+      refnum: '0845474790',
       image:
         'https://http2.mlstatic.com/D_NQ_NP_867437-MCO49471632011_032022-O.webp',
       name: 'Rhea americana',
@@ -11,7 +11,7 @@ export const data = {
       price: 12.0,
     },
     {
-      _id: '2603951637',
+      refnum: '2603951637',
       image:
         'https://http2.mlstatic.com/D_NQ_NP_965150-MCO52025832573_102022-O.webp',
       name: 'Chloephaga melanoptera',
@@ -21,7 +21,7 @@ export const data = {
       price: 8.59,
     },
     {
-      _id: '1509435875',
+      refnum: '1509435875',
       image:
         'https://http2.mlstatic.com/D_NQ_NP_906621-MCO49543848029_042022-O.webp',
       name: 'Felis chaus',
@@ -31,7 +31,7 @@ export const data = {
       price: 4.7,
     },
     {
-      _id: '5964582966',
+      refnum: '5964582966',
       image:
         'https://http2.mlstatic.com/D_NQ_NP_671640-MCO51484848442_092022-O.webp',
       name: 'Speothos vanaticus',
@@ -41,7 +41,7 @@ export const data = {
       price: 8.97,
     },
     {
-      _id: '9874784644',
+      refnum: '9874784644',
       image:
         'https://http2.mlstatic.com/D_NQ_NP_918604-MLA44483909501_012021-O.webp',
       name: 'Procyon lotor',
@@ -51,7 +51,7 @@ export const data = {
       price: 7.98,
     },
     {
-      _id: '6661829575',
+      refnum: '6661829575',
       image:
         'https://http2.mlstatic.com/D_NQ_NP_916724-MLA46165310467_052021-O.webp',
       name: 'Oryx gazella',
@@ -61,7 +61,7 @@ export const data = {
       price: 5.74,
     },
     {
-      _id: '4507706548',
+      refnum: '4507706548',
       image:
         'https://http2.mlstatic.com/D_NQ_NP_767509-MCO48114515665_112021-O.webp',
       name: 'Oryx gazella callotis',
@@ -71,7 +71,7 @@ export const data = {
       price: 3.38,
     },
     {
-      _id: '6944668122',
+      refnum: '6944668122',
       image:
         'https://http2.mlstatic.com/D_NQ_NP_718825-MLA46237900902_062021-O.webp',
       name: 'Mirounga angustirostris',
@@ -81,7 +81,7 @@ export const data = {
       price: 9.7,
     },
     {
-      _id: '1489657517',
+      refnum: '1489657517',
       image:
         'https://http2.mlstatic.com/D_NQ_NP_940416-MLA48592641036_122021-O.webp',
       name: 'Diceros bicornis',
@@ -91,7 +91,7 @@ export const data = {
       price: 1.39,
     },
     {
-      _id: '0551243554',
+      refnum: '0551243554',
       image:
         'https://http2.mlstatic.com/D_NQ_NP_626595-MCO44847312761_022021-O.webp',
       name: 'Heloderma horridum',

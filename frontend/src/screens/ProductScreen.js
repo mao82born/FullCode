@@ -24,7 +24,7 @@ const reducer = (state, action) => {
 export function ProductScreen() {
   const navigate = useNavigate();
   const params = useParams();
-  const { id } = params;
+  const { refnum } = params;
 
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
@@ -35,14 +35,14 @@ export function ProductScreen() {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const result = await axios.get(`/api/products/id/${id}`);
+        const result = await axios.get(`/api/products/refnum/${refnum}`);
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
       }
     };
     fetchData();
-  }, [id]);
+  }, [refnum]);
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart } = state;

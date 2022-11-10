@@ -29,11 +29,11 @@ export function Product(props) {
 
   return (
     <Card>
-      <Link to={`/product/${product._id}`}>
+      <Link to={`/product/${product.refnum}`}>
         <img src={product.image} className="card-img-top" alt={product.name} />
       </Link>
       <Card.Body>
-        <Link to={`/product/${product._id}`}>
+        <Link to={`/product/${product.refnum}`}>
           <Card.Title>{product.name}</Card.Title>
         </Link>
         <Card.Text>${product.price}</Card.Text>
