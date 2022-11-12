@@ -28,6 +28,28 @@ productRouter.get('/:refnum', async (req, res) => {
     }
 });
 
+productRouter.put(
+    '/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const productId = req.params.id;
+        const product = await Product.findById(productId);
+        if (product) {
+            product.name = req.body.name;
+            product.refnum = req.body.refnum;
+            product.price = req.body.price;
+            product.image = req.body.image;
+            product.countInStock = req.body.countInStock;
+            product.description = req.body.description;
+            await product.save();
+            res.send({ message: 'Producto editado' });
+        } else {
+            res.status(404).send({ message: 'No se encuentra el producto.' });
+        }
+    })
+);
+
 productRouter.post(
     '/',
     isAuth,
