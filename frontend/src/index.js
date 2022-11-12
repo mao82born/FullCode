@@ -7,12 +7,12 @@ import reportWebVitals from './reportWebVitals';
 import { Store, StoreProvider } from './Store';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <StoreProvider>
-      <App />
-    </StoreProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <StoreProvider>
+            <App />
+        </StoreProvider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

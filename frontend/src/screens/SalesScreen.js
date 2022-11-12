@@ -2,7 +2,7 @@ import React from 'react';
 import { ventas } from '../dataSales';
 import { SalesList } from '../components/SalesList';
 
-function VentasScreen() {
+function SalesScreen() {
   return (
     <React.Fragment>
       <div className="App">
@@ -14,4 +14,4 @@ function VentasScreen() {
   );
 }
 
-export default VentasScreen;
+export default SalesScreen;
