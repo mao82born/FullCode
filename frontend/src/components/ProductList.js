@@ -43,19 +43,11 @@ export function ProductList(props) {
                 <Card.Text>{product.name}</Card.Text>
                 <Card.Text>Stock: {product.countInStock}</Card.Text>
                 <Card.Text>${product.price}</Card.Text>
-                {product.countInStock === 0 ? (
-                    <Button variant="light" disabled>
-                        No disponible
-                    </Button>
-                ) : (
-                    <Button
-                        onClick={() =>
-                            navigate(`/admin/product/${product._id}`)
-                        }
-                    >
-                        Editar
-                    </Button>
-                )}
+                <Button
+                    onClick={() => navigate(`/admin/product/${product._id}`)}
+                >
+                    Editar
+                </Button>
                 <Button>Eliminar</Button>
             </Card.Body>
         </Card>

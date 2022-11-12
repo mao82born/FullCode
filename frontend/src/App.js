@@ -17,6 +17,7 @@ import AdminRoute from './components/AdminRoute';
 import { ProductListScreen } from './screens/ProductListScreen';
 import SalesScreen from './screens/SalesScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
+import ProductNewScreen from './screens/ProductNewScreen';
 
 function App() {
     const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -53,14 +54,14 @@ function App() {
                                         title={userInfo.name}
                                         id="basic-nav-dropdown"
                                     >
-                                        <LinkContainer to="/profile">
+                                        <LinkContainer to="/">
                                             <NavDropdown.Item>
-                                                Perfil de usuario
+                                                Lista de productos
                                             </NavDropdown.Item>
                                         </LinkContainer>
-                                        <LinkContainer to="/orderhistory">
+                                        <LinkContainer to="/item2">
                                             <NavDropdown.Item>
-                                                Lista de compra
+                                                Item 2
                                             </NavDropdown.Item>
                                         </LinkContainer>
                                         <NavDropdown.Divider />
@@ -115,7 +116,7 @@ function App() {
                                 path="/admin/newproduct"
                                 element={
                                     <AdminRoute>
-                                        <NewProductScreen />
+                                        <ProductNewScreen />
                                     </AdminRoute>
                                 }
                             ></Route>

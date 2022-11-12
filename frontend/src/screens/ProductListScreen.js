@@ -84,13 +84,6 @@ export function ProductListScreen() {
                 <Col>
                     <h1>Productos</h1>
                 </Col>
-                <Col className="col text-end">
-                    <div>
-                        <Button type="button" onClick={createHandler}>
-                            Nuevo producto
-                        </Button>
-                    </div>
-                </Col>
             </Row>
             <div className="products">
                 {loading ? (

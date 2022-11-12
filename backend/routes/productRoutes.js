@@ -56,13 +56,12 @@ productRouter.post(
     isAdmin,
     expressAsyncHandler(async (req, res) => {
         const newProduct = new Product({
-            refnum: '0',
-            image: 'imagen.jpg',
-            name: 'Nombre producto',
-            description:
-                'Voluptate nostrud est ipsum non voluptate proident cillum sint eiusmod laborum nostrud et exercitation.',
-            countInStock: 0,
-            price: 0,
+            refnum: req.body.refnum,
+            image: req.body.image,
+            name: req.body.name,
+            description: req.body.description,
+            countInStock: req.body.countInStock,
+            price: req.body.price,
         });
         const product = await newProduct.save();
         res.send({ message: 'Nuevo producto ingresado.', product });

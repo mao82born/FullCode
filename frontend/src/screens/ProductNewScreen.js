@@ -18,17 +18,20 @@ const reducer = (state, action) => {
             return { ...state, loading: false };
         case 'FETCH_FAIL':
             return { ...state, loading: false, error: action.payload };
-        case 'UPDATE_REQUEST':
-            return { ...state, loadingUpdate: true };
-        case 'UPDATE_SUCCESS':
-            return { ...state, loadingUpdate: false };
-        case 'UPDATE_FAIL':
-            return { ...state, loadingUpdate: false };
+        case 'CREATE_REQUEST':
+            return { ...state, loadingCreate: true };
+        case 'CREATE_SUCCESS':
+            return {
+                ...state,
+                loadingCreate: false,
+            };
+        case 'CREATE_FAIL':
+            return { ...state, loadingCreate: false };
         default:
             return state;
     }
 };
-export default function ProductEditScreen() {
+export default function ProductNewScreen() {
     const navigate = useNavigate();
     const params = useParams(); // /product/:id
     const { id: productId } = params;
@@ -48,7 +51,7 @@ export default function ProductEditScreen() {
     const [description, setDescription] = useState('');
     const [countInStock, setCountInStock] = useState('');
 
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchData = async () => {
             try {
                 dispatch({ type: 'FETCH_REQUEST' });
@@ -68,16 +71,15 @@ export default function ProductEditScreen() {
             }
         };
         fetchData();
-    }, [productId]);
+    }, [productId]);*/
 
-    const submitHandler = async (e) => {
+    const createHandler = async (e) => {
         e.preventDefault();
         try {
             dispatch({ type: 'UPDATE_REQUEST' });
-            await axios.put(
-                `/api/products/${productId}`,
+            await axios.post(
+                `/api/products`,
                 {
-                    _id: productId,
                     name,
                     refnum,
                     price,
@@ -100,11 +102,34 @@ export default function ProductEditScreen() {
         }
     };
 
+    /*const createHandler2 = async () => {
+        if (window.confirm('¿Quieres crear un producto?')) {
+            try {
+                dispatch({ type: 'CREATE_REQUEST' });
+                const { data } = await axios.post(
+                    '/api/products',
+                    {},
+                    {
+                        headers: { Authorization: `Bearer ${userInfo.token}` },
+                    }
+                );
+                //toast.success('product created successfully');
+                dispatch({ type: 'CREATE_SUCCESS' });
+                navigate(`/admin/product`);
+            } catch (err) {
+                //toast.error(getError(error));
+                dispatch({
+                    type: 'CREATE_FAIL',
+                });
+            }
+        }
+    };*/
+
     return (
         <Container className="small-container">
-            <h1>Editar Producto {productId}</h1>
+            <h1>Nuevo Producto </h1>
 
-            <Form onSubmit={submitHandler}>
+            <Form onSubmit={createHandler}>
                 <Form.Group className="mb-3" controlId="refnum">
                     <Form.Label>Número de referencia</Form.Label>
                     <Form.Control
@@ -160,7 +185,7 @@ export default function ProductEditScreen() {
                 </Form.Group>
 
                 <div className="mb-3">
-                    <Button disabled={loadingUpdate} type="submit">
+                    <Button type="button" onClick={createHandler}>
                         Guardar
                     </Button>
                 </div>
