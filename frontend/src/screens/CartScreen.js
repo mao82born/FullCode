@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useReducer, useState } from 'react';
 import { Store } from '../Store';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,125 +9,226 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
-export function CartScreen() {
-  const navigate = useNavigate();
-  const { state, dispatch: ctxDispatch } = useContext(Store);
-  const {
-    cart: { cartItems },
-  } = state;
-
-  const updateCartHandler = async (item, quantity) => {
-    const { data } = await axios.get(`/api/products/${item._id}`);
-    if (data.countInStock < quantity) {
-      window.alert('No hay productos.');
-      return;
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'FETCH_REQUEST':
+            return { ...state, loading: true };
+        case 'FETCH_SUCCESS':
+            return { ...state, loading: false };
+        case 'FETCH_FAIL':
+            return { ...state, loading: false, error: action.payload };
+        case 'CREATE_REQUEST':
+            return { ...state, loadingCreate: true };
+        case 'CREATE_SUCCESS':
+            return {
+                ...state,
+                loadingCreate: false,
+            };
+        case 'CREATE_FAIL':
+            return { ...state, loadingCreate: false };
+        default:
+            return state;
     }
-    ctxDispatch({
-      type: 'CART_ADD_ITEM',
-      payload: { ...item, quantity },
+};
+
+export function CartScreen() {
+    const navigate = useNavigate();
+    const { state, dispatch: ctxDispatch } = useContext(Store);
+    const {
+        cart: { cartItems },
+    } = state;
+    const { userInfo } = state;
+
+    const [{ loading, error, loadingUpdate }, dispatch] = useReducer(reducer, {
+        loading: true,
+        error: '',
     });
-  };
 
-  const removeItemHandler = (item) => {
-    ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
-  };
+    //const [name, setName] = useState('');
+    const [refnum, setRefNum] = useState('');
+    const [price, setPrice] = useState('');
+    //const [image, setImage] = useState('');
+    //const [description, setDescription] = useState('');
+    //const [countInStock, setCountInStock] = useState('');
 
-  const checkoutHandler = () => {
-    navigate('/signin?redirect=/shipping');
-  };
+    const checkoutHandler = async (e) => {
+        e.preventDefault();
+        try {
+            dispatch({ type: 'UPDATE_REQUEST' });
+            await axios.post(
+                `/api/sales`,
+                {
+                    //name,
+                    refnum,
+                    price,
+                    //image,
+                    //countInStock,
+                    //description,
+                },
+                {
+                    headers: { Authorization: `Bearer ${userInfo.token}` },
+                }
+            );
+            dispatch({
+                type: 'UPDATE_SUCCESS',
+            });
+            //toast.success('Product updated successfully');
+            navigate('/admin/productlist');
+        } catch (err) {
+            //toast.error(getError(err));
+            dispatch({ type: 'UPDATE_FAIL' });
+        }
+    };
 
-  return (
-    <div>
-      <h1>Carrito de compras</h1>
-      <Row>
-        <Col md={8}>
-          {cartItems.length === 0 ? (
-            <MessageBox>
-              El carrito está vacio. <Link to="/">Ir a comprar</Link>
-            </MessageBox>
-          ) : (
-            <ListGroup>
-              {cartItems.map((item) => (
-                <ListGroup.Item key={item._id}>
-                  <Row className="align-items-center">
-                    <Col md={4}>
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="img-fluid rounded img-thumbnail"
-                      ></img>{' '}
-                      <Link to={`/product/${item.refnum}`}>{item.name}</Link>
-                    </Col>
-                    <Col md={3}>
-                      <Button
-                        onClick={() =>
-                          updateCartHandler(item, item.quantity - 1)
-                        }
-                        variant="light"
-                        disabled={item.quantity === 1}
-                      >
-                        {/*Boton para
+    const updateCartHandler = async (item, quantity) => {
+        const { data } = await axios.get(`/api/products/${item._id}`);
+        if (data.countInStock < quantity) {
+            window.alert('No hay productos.');
+            return;
+        }
+        ctxDispatch({
+            type: 'CART_ADD_ITEM',
+            payload: { ...item, quantity },
+        });
+    };
+
+    const removeItemHandler = (item) => {
+        ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+    };
+
+    /*
+    const checkoutHandler = () => {
+        navigate('/signin?redirect=/shipping');
+    };*/
+
+    return (
+        <div>
+            <h1>Carrito de compras</h1>
+            <Row>
+                <Col md={8}>
+                    {cartItems.length === 0 ? (
+                        <MessageBox>
+                            El carrito está vacio.{' '}
+                            <Link to="/">Ir a comprar</Link>
+                        </MessageBox>
+                    ) : (
+                        <ListGroup>
+                            {cartItems.map((item) => (
+                                <ListGroup.Item key={item._id}>
+                                    <Row className="align-items-center">
+                                        <Col md={4}>
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                                className="img-fluid rounded img-thumbnail"
+                                            ></img>{' '}
+                                            <Link
+                                                to={`/product/${item.refnum}`}
+                                            >
+                                                {item.name}
+                                            </Link>
+                                        </Col>
+                                        <Col md={3}>
+                                            <Button
+                                                onClick={() =>
+                                                    updateCartHandler(
+                                                        item,
+                                                        item.quantity - 1
+                                                    )
+                                                }
+                                                variant="light"
+                                                disabled={item.quantity === 1}
+                                            >
+                                                {/*Boton para
                         restar productos*/}
-                        <i className="fas fa-minus-circle">-</i>
-                      </Button>{' '}
-                      <span>{item.quantity}</span>{' '}
-                      <Button
-                        onClick={() =>
-                          updateCartHandler(item, item.quantity + 1)
-                        }
-                        variant="light"
-                        disabled={item.quantity === item.countInStock}
-                      >
-                        {/*Boton para
-                        sumar productos*/}
-                        <i className="fas fa-plus-circle">+</i>
-                      </Button>
-                    </Col>
-                    <Col md={3}>${item.price}</Col>
-                    <Col md={2}>
-                      {/*Boton para
+                                                <i className="fas fa-minus-circle">
+                                                    -
+                                                </i>
+                                            </Button>{' '}
+                                            <span>{item.quantity}</span>{' '}
+                                            <Button
+                                                onClick={() =>
+                                                    updateCartHandler(
+                                                        item,
+                                                        item.quantity + 1
+                                                    )
+                                                }
+                                                variant="light"
+                                                disabled={
+                                                    item.quantity ===
+                                                    item.countInStock
+                                                }
+                                            >
+                                                {/*Boton para sumar productos*/}
+                                                <i className="fas fa-plus-circle">
+                                                    +
+                                                </i>
+                                            </Button>
+                                        </Col>
+                                        <Col
+                                            md={3}
+                                            value={item.price}
+                                            onChange={(e) =>
+                                                setPrice(e.target.value)
+                                            }
+                                        >
+                                            ${item.price}
+                                        </Col>
+                                        <Col md={2}>
+                                            {/*Boton para
                         eliminar productos*/}
-                      <Button
-                        onClick={() => removeItemHandler(item)}
-                        variant="light"
-                      >
-                        <i className="fas fa-trash">D</i>
-                      </Button>
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
-          )}
-        </Col>
-        <Col md={4}>
-          <Card>
-            <Card.Body>
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <h3>
-                    Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
-                    articulo(s)) : ${' '}
-                    {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
-                  </h3>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <div className="d-grid">
-                    <Button
-                      onClick={checkoutHandler}
-                      type="button"
-                      variant="primary"
-                      disabled={cartItems.length === 0}
-                    >
-                      Comprar
-                    </Button>
-                  </div>
-                </ListGroup.Item>
-              </ListGroup>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </div>
-  );
+                                            <Button
+                                                onClick={() =>
+                                                    removeItemHandler(item)
+                                                }
+                                                variant="light"
+                                            >
+                                                <i className="fas fa-trash">
+                                                    D
+                                                </i>
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                </ListGroup.Item>
+                            ))}
+                        </ListGroup>
+                    )}
+                </Col>
+                <Col md={4}>
+                    <Card>
+                        <Card.Body>
+                            <ListGroup variant="flush">
+                                <ListGroup.Item>
+                                    <h3>
+                                        Subtotal (
+                                        {cartItems.reduce(
+                                            (a, c) => a + c.quantity,
+                                            0
+                                        )}{' '}
+                                        articulo(s)) : ${' '}
+                                        {cartItems.reduce(
+                                            (a, c) => a + c.price * c.quantity,
+                                            0
+                                        )}
+                                    </h3>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <div className="d-grid">
+                                        <Button
+                                            onClick={checkoutHandler}
+                                            type="button"
+                                            variant="primary"
+                                            disabled={cartItems.length === 0}
+                                        >
+                                            Comprar
+                                        </Button>
+                                    </div>
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+        </div>
+    );
 }

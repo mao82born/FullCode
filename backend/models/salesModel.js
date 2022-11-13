@@ -17,5 +17,5 @@ const salesSchema = new mongoose.Schema(
     }
 );
 
-const Sales = mongoose.model('Sales', salesSchema);
-export default Sales;
+const Sale = mongoose.model('Sale', salesSchema);
+export default Sale;

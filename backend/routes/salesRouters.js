@@ -1,9 +1,43 @@
 import express from 'express';
-import Sales from '../models/salesModel';
+import Sale from '../models/salesModel.js';
+import { isAdmin, isAuth } from '../utils.js';
+import expressAsyncHandler from 'express-async-handler';
 
 export const salesRouter = express.Router();
 
-salesRouter.get('/sales', async (req, res) => {
-    const sales = await Sales.find();
+/*
+salesRouter.get(
+    '/',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const sales = await Sale.find();
+        console.log(sales);
+        res.send(sales);
+    })
+);*/
+
+salesRouter.get('/', async (req, res) => {
+    const sales = await Sale.find();
+    //console.log(sales);
     res.send(sales);
 });
+
+salesRouter.post(
+    '/',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const newSale = new Sale({
+            dateSale: Date.now(),
+            docUser: '222222',
+            price: req.body.price,
+            descriptionSale: {
+                refnum: req.body.refnum,
+                quantity: req.body.quantity,
+            },
+        });
+        const sales = await newSale.save();
+        res.send({ message: 'Nueva venta registrada.', Sale });
+    })
+);

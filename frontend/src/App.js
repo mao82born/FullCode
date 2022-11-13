@@ -12,12 +12,12 @@ import { useContext } from 'react';
 import { Store } from './Store';
 import { CartScreen } from './screens/CartScreen';
 import { SigninScreen } from './screens/SigninScreen';
-import NewProductScreen from './screens/NewProductScreen';
 import AdminRoute from './components/AdminRoute';
 import { ProductListScreen } from './screens/ProductListScreen';
 import SalesScreen from './screens/SalesScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import ProductNewScreen from './screens/ProductNewScreen';
+import { SalesListScreen } from './screens/SalesListScreen';
 
 function App() {
     const { state, dispatch: ctxDispatch } = useContext(Store);
