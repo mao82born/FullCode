@@ -26,7 +26,6 @@ salesRouter.get('/', async (req, res) => {
 salesRouter.post(
     '/',
     isAuth,
-    isAdmin,
     expressAsyncHandler(async (req, res) => {
         const newSale = new Sale({
             dateSale: Date.now(),
@@ -37,7 +36,7 @@ salesRouter.post(
                 quantity: req.body.quantity,
             },
         });
-        const sales = await newSale.save();
-        res.send({ message: 'Nueva venta registrada.', Sale });
+        const sale = await newSale.save();
+        res.send({ message: 'Nueva venta registrada.', sale });
     })
 );

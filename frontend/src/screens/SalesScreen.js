@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import MessageBox from '../components/MessageBox';
@@ -50,7 +50,7 @@ export default function SalesScreen() {
 
     return (
         <div>
-            <h1>Orders</h1>
+            <h1>Ventas</h1>
             {loading ? (
                 <div>Cargando...</div>
             ) : error ? (
@@ -70,10 +70,14 @@ export default function SalesScreen() {
                                 <td>{order._id}</td>
                                 <td>{order.dateSale}</td>
                                 <td>{order.price}</td>
-
                                 <td></td>
                             </tr>
                         ))}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                     </tbody>
                 </table>
             )}
