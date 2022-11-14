@@ -44,25 +44,29 @@ export function CartScreen() {
         error: '',
     });
 
-    //const [name, setName] = useState('');
+    const [dateSale, setDateSale] = useState('');
     const [refnum, setRefNum] = useState('');
     const [price, setPrice] = useState('');
-    //const [image, setImage] = useState('');
-    //const [description, setDescription] = useState('');
+    const [docUser, setDocUser] = useState('');
+    const [quantity, setQuantity] = useState('');
     //const [countInStock, setCountInStock] = useState('');
 
     const checkoutHandler = async (e) => {
         e.preventDefault();
-        alert('Compra realizada con exito.');
+        //alert('Compra realizada con exito.');
         try {
             dispatch({ type: 'UPDATE_REQUEST' });
             await axios.post(
                 `/api/sales`,
                 {
-                    //name,
-                    refnum,
-                    price,
-                    //image,
+                    dateSale,
+
+                    price: cartItems.price,
+                    docUser,
+                    descriptionSale: {
+                        refnum: cartItems.refnum,
+                        quantity,
+                    },
                     //countInStock,
                     //description,
                 },
@@ -201,12 +205,12 @@ export function CartScreen() {
                             <ListGroup variant="flush">
                                 <ListGroup.Item>
                                     <h3>
-                                        Total (
+                                        Total:&nbsp;
                                         {cartItems.reduce(
                                             (a, c) => a + c.quantity,
                                             0
                                         )}{' '}
-                                        articulo(s)) : <br />${' '}
+                                        articulo(s) <br />${' '}
                                         {cartItems.reduce(
                                             (a, c) => a + c.price * c.quantity,
                                             0
