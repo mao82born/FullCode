@@ -1,12 +1,11 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import './productos.css';
+import React, { useState } from "react";
+import "./productos.css";
 
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import { Button } from "react-bootstrap";
 
 /*      
 id: "GGOEAFKA087499",
@@ -18,20 +17,42 @@ precio
 */
 
 export function ProductosListAdmin({ productos }) {
+  const [prodSelect, setProdSelect] = useState([]);
+
+  function handleClick(e) {
+    e.preventDefault();
+    setProdSelect([...productos]);
+  }
+
   return (
     <Container>
       <Row xs={1} md={4} className="g-4">
         {productos.map((item) => {
           return (
-            <Col>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={item.urlImagen} className="imgProducto" />
+            <Col key={item.id}>
+              <Card style={{ width: "18rem" }}>
+                <Card.Img
+                  variant="top"
+                  src={item.urlImagen}
+                  className="imgProducto"
+                />
                 <Card.Body>
                   <Card.Title>{item.nombre}</Card.Title>
                   <Card.Text>
-                    {item.precio}<br />
+                    {item.precio}
+                    <br />
                     Disponible: {item.cantidad}
                   </Card.Text>
+                  <div className="center">
+                    {prodSelect}
+                    <Button
+                      onClick={handleClick}
+                      variant="outline-dark"
+                      value="Editar"
+                    >
+                      Editar{" "}
+                    </Button>
+                  </div>
                 </Card.Body>
               </Card>
             </Col>
@@ -39,7 +60,7 @@ export function ProductosListAdmin({ productos }) {
         })}
       </Row>
     </Container>
-  )
+  );
 }
 
 /*

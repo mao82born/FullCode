@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Listado de productos, agregarlos al carrito, antes de la conexión con la base de datos
+Antes_d_conexion_mongodb/
