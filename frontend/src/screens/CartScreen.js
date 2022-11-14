@@ -53,6 +53,7 @@ export function CartScreen() {
 
     const checkoutHandler = async (e) => {
         e.preventDefault();
+        alert('Compra realizada con exito.');
         try {
             dispatch({ type: 'UPDATE_REQUEST' });
             await axios.post(
@@ -200,12 +201,12 @@ export function CartScreen() {
                             <ListGroup variant="flush">
                                 <ListGroup.Item>
                                     <h3>
-                                        Subtotal (
+                                        Total (
                                         {cartItems.reduce(
                                             (a, c) => a + c.quantity,
                                             0
                                         )}{' '}
-                                        articulo(s)) : ${' '}
+                                        articulo(s)) : <br />${' '}
                                         {cartItems.reduce(
                                             (a, c) => a + c.price * c.quantity,
                                             0
