@@ -17,7 +17,6 @@ import { ProductListScreen } from './screens/ProductListScreen';
 import SalesScreen from './screens/SalesScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import ProductNewScreen from './screens/ProductNewScreen';
-import { SalesListScreen } from './screens/SalesListScreen';
 
 function App() {
     const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -32,73 +31,86 @@ function App() {
         <BrowserRouter>
             <div className="d-flex flex-column site-container">
                 <header>
-                    <Navbar bg="dark" variant="dark">
+                    <Navbar className="bg-nav-color">
                         <Container>
                             <LinkContainer to="/">
                                 <Navbar.Brand>FullGames</Navbar.Brand>
                             </LinkContainer>
-                            <Nav className="me-auto">
-                                <Link to="/cart" className="nav-link">
-                                    Cart
-                                    {cart.cartItems.length > 0 && (
-                                        <Badge pill bg="danger">
-                                            {cart.cartItems.reduce(
-                                                (a, c) => a + c.quantity,
-                                                0
-                                            )}
-                                        </Badge>
-                                    )}
-                                </Link>
-                                {userInfo ? (
-                                    <NavDropdown
-                                        title={userInfo.name}
-                                        id="basic-nav-dropdown"
-                                    >
-                                        <LinkContainer to="/">
-                                            <NavDropdown.Item>
-                                                Lista de productos
-                                            </NavDropdown.Item>
-                                        </LinkContainer>
-                                        <LinkContainer to="/item2">
-                                            <NavDropdown.Item>
-                                                Item 2
-                                            </NavDropdown.Item>
-                                        </LinkContainer>
-                                        <NavDropdown.Divider />
-                                        <Link
-                                            className="dropdown-item"
-                                            to="#signout"
-                                            onClick={signoutHandler}
-                                        >
-                                            Salir
-                                        </Link>
-                                    </NavDropdown>
-                                ) : (
-                                    <Link className="nav-link" to="/signin">
-                                        Ingresar
+                            <Navbar.Collapse id="basic-navbar-nav">
+                                <Nav className="me-auto  w-100  justify-content-end">
+                                    <Link to="/cart" className="nav-link">
+                                        <i className="fas fa-cart-plus"></i>
+                                        {cart.cartItems.length > 0 && (
+                                            <Badge pill bg="danger">
+                                                {cart.cartItems.reduce(
+                                                    (a, c) => a + c.quantity,
+                                                    0
+                                                )}
+                                            </Badge>
+                                        )}
                                     </Link>
-                                )}
-                                <NavDropdown
-                                    title="Admin"
-                                    id="basic-nav-dropdown"
-                                >
-                                    <LinkContainer to="/admin/newproduct">
-                                        <NavDropdown.Item>
-                                            Nuevo producto
-                                        </NavDropdown.Item>
-                                    </LinkContainer>
-                                    <LinkContainer to="/admin/productlist">
-                                        <NavDropdown.Item>
-                                            Lista de productos
-                                        </NavDropdown.Item>
-                                    </LinkContainer>
-                                    <LinkContainer to="/admin/saleslist">
-                                        <NavDropdown.Item>
-                                            Lista de ventas
-                                        </NavDropdown.Item>
-                                    </LinkContainer>
-                                </NavDropdown>
-                            </Nav>
+                                    {userInfo ? (
+                                        <NavDropdown
+                                            title={userInfo.name}
+                                            id="basic-nav-dropdown"
+                                        >
+                                            <LinkContainer to="/">
+                                                <NavDropdown.Item>
+                                                    Lista de productos
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/cart">
+                                                <NavDropdown.Item>
+                                                    Carrito
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <NavDropdown.Divider />
+                                            <Link
+                                                className="dropdown-item"
+                                                to="#signout"
+                                                onClick={signoutHandler}
+                                            >
+                                                Salir
+                                            </Link>
+                                        </NavDropdown>
+                                    ) : (
+                                        <Link className="nav-link" to="/signin">
+                                            Ingresar
+                                        </Link>
+                                    )}
+                                    {userInfo && userInfo.isAdmin && (
+                                        <NavDropdown
+                                            title="Admin"
+                                            id="basic-nav-dropdown"
+                                            className="text-nav"
+                                        >
+                                            <LinkContainer to="/admin/newproduct">
+                                                <NavDropdown.Item>
+                                                    Nuevo producto
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/admin/productlist">
+                                                <NavDropdown.Item>
+                                                    Lista de productos
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/admin/saleslist">
+                                                <NavDropdown.Item>
+                                                    Lista de ventas
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <NavDropdown.Divider />
+                                            <Link
+                                                className="dropdown-item"
+                                                to="#signout"
+                                                onClick={signoutHandler}
+                                            >
+                                                Salir
+                                            </Link>
+                                        </NavDropdown>
+                                    )}
+                                </Nav>
+                            </Navbar.Collapse>
                         </Container>
                     </Navbar>
                 </header>
@@ -148,8 +160,8 @@ function App() {
                         </Routes>
                     </Container>
                 </main>
-                <footer className="text-center">
-                    Todos los derechos reservados
+                <footer className="text-center bg-nav-color">
+                    Todos los derechos reservados ©FullCode
                 </footer>
             </div>
         </BrowserRouter>

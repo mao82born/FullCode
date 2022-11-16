@@ -1,56 +1,111 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .site-container {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 main {
-  flex: 1;
+    flex: 1;
+}
+
+.bg-nav-color {
+    background-color: #07b1bc;
 }
 
 .btn-primary {
-  background-color: #f0c040;
-  color: #000000;
+    /*background-color: #f0c040;*/
+    border: none;
+    background-color: #fecd5a;
+    color: #000000;
+    display: inline-block;
 }
+
+.btn-primary:hover {
+    background-color: #fd9319;
+}
+
+.btn-primary:disabled {
+    background-color: #2b8180;
+}
+
 .products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .product {
-  border: 1px #404040 solid;
-  margin: 1rem;
+    border: 1px #404040 solid;
+    margin: 1rem;
 }
 
 .product img {
-  width: 100%;
-  max-width: 400px;
+    width: 100%;
+    max-width: 400px;
 }
 
 .product-info {
-  padding: 1rem;
+    padding: 1rem;
 }
 
 .img-large {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .img-thumbnail {
-  height: 80px;
+    height: 80px;
 }
 .img-thumbnail_med {
-  height: 180px;
-  width: 150px;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+}
+
+/*Para mantener el mismo tamaño de las imagenes*/
+.imgProducto {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
 }
 
 .small-container {
-  max-width: 600px;
+    max-width: 600px;
+}
+
+.text-decoration {
+    color: #07b1bc;
+    text-decoration: none;
+}
+
+.text-margin {
+    margin: 0;
+}
+
+.text-nav {
+    color: white;
+    text-decoration: none;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.short-div {
+    width: 80px;
+}
+
+.short-div-price {
+    width: 150px;
+}
+
+.short-div-refnum {
+    width: 200px;
 }

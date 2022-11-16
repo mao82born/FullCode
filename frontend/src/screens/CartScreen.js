@@ -59,13 +59,11 @@ export function CartScreen() {
             await axios.post(
                 `/api/sales`,
                 {
-                    dateSale,
+                    price: cartItems.reduce,
 
-                    price: cartItems.price,
-                    docUser,
                     descriptionSale: {
                         refnum: cartItems.refnum,
-                        quantity,
+                        quantity: cartItems.quantity,
                     },
                     //countInStock,
                     //description,
@@ -146,9 +144,7 @@ export function CartScreen() {
                                             >
                                                 {/*Boton para
                         restar productos*/}
-                                                <i className="fas fa-minus-circle">
-                                                    -
-                                                </i>
+                                                <i className="fas fa-minus-circle"></i>
                                             </Button>{' '}
                                             <span>{item.quantity}</span>{' '}
                                             <Button
@@ -165,20 +161,10 @@ export function CartScreen() {
                                                 }
                                             >
                                                 {/*Boton para sumar productos*/}
-                                                <i className="fas fa-plus-circle">
-                                                    +
-                                                </i>
+                                                <i className="fas fa-plus-circle"></i>
                                             </Button>
                                         </Col>
-                                        <Col
-                                            md={3}
-                                            value={item.price}
-                                            onChange={(e) =>
-                                                setPrice(e.target.value)
-                                            }
-                                        >
-                                            ${item.price}
-                                        </Col>
+                                        <Col md={3}>$ {item.price}</Col>
                                         <Col md={2}>
                                             {/*Boton para
                         eliminar productos*/}
@@ -188,9 +174,7 @@ export function CartScreen() {
                                                 }
                                                 variant="light"
                                             >
-                                                <i className="fas fa-trash">
-                                                    D
-                                                </i>
+                                                <i className="fas fa-trash"></i>
                                             </Button>
                                         </Col>
                                     </Row>

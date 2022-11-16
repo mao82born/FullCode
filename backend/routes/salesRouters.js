@@ -30,7 +30,7 @@ salesRouter.post(
         const newSale = new Sale({
             dateSale: Date.now(),
             docUser: '222222',
-            price: req.body.price,
+            price: 12,
             descriptionSale: {
                 refnum: req.body.refnum,
                 quantity: req.body.quantity,

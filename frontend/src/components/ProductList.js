@@ -23,14 +23,17 @@ export function ProductList(props) {
             />
 
             <Card.Body>
-                <Card.Text>{product.name}</Card.Text>
-                <Card.Text>Stock: {product.countInStock}</Card.Text>
-                <Card.Text>${product.price}</Card.Text>
+                <Card.Text className="text-margin">{product.name}</Card.Text>
+                <Card.Text className="text-margin">
+                    Stock: {product.countInStock}
+                </Card.Text>
+                <Card.Text className="text-margin">${product.price}</Card.Text>
                 <Button
                     onClick={() => navigate(`/admin/product/${product._id}`)}
                 >
                     Editar
                 </Button>
+                &nbsp;
                 <Button>Eliminar</Button>
             </Card.Body>
         </Card>
