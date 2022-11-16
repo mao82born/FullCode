@@ -99,6 +99,11 @@ export function CartScreen() {
         ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
     };
 
+    const clearHandler = () => {
+        ctxDispatch({ type: 'CART_CLEAR' });
+        localStorage.removeItem('userInfo');
+    };
+
     /*
     const checkoutHandler = () => {
         navigate('/signin?redirect=/shipping');
@@ -210,6 +215,18 @@ export function CartScreen() {
                                             disabled={cartItems.length === 0}
                                         >
                                             Comprar
+                                        </Button>
+                                    </div>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <div className="d-grid">
+                                        <Button
+                                            onClick={clearHandler}
+                                            type="button"
+                                            variant="primary"
+                                            disabled={cartItems.length === 0}
+                                        >
+                                            Vaciar carrito
                                         </Button>
                                     </div>
                                 </ListGroup.Item>
