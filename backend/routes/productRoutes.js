@@ -67,3 +67,18 @@ productRouter.post(
         res.send({ message: 'Nuevo producto ingresado.', product });
     })
 );
+
+productRouter.delete(
+    '/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const product = await Product.findById(req.params.id);
+        if (product) {
+            await product.remove();
+            res.send({ message: 'Producto eliminado.' });
+        } else {
+            res.status(404).send({ message: 'No se encontró el producto.' });
+        }
+    })
+);

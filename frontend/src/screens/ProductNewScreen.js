@@ -129,11 +129,13 @@ export default function ProductNewScreen() {
             <Form onSubmit={createHandler}>
                 <Form.Group className="mb-3" controlId="refnum">
                     <Form.Label>Número de referencia</Form.Label>
-                    <Form.Control
-                        value={refnum}
-                        onChange={(e) => setRefNum(e.target.value)}
-                        required
-                    />
+                    <div className="short-div-refnum">
+                        <Form.Control
+                            value={refnum}
+                            onChange={(e) => setRefNum(e.target.value)}
+                            required
+                        />
+                    </div>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="name">
@@ -157,6 +159,8 @@ export default function ProductNewScreen() {
                 <Form.Group className="mb-3" controlId="description">
                     <Form.Label>Descripción</Form.Label>
                     <Form.Control
+                        as="textarea"
+                        rows={3}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
@@ -165,20 +169,24 @@ export default function ProductNewScreen() {
 
                 <Form.Group className="mb-3" controlId="countInStock">
                     <Form.Label>Stock</Form.Label>
-                    <Form.Control
-                        value={countInStock}
-                        onChange={(e) => setCountInStock(e.target.value)}
-                        required
-                    />
+                    <div className="short-div">
+                        <Form.Control
+                            value={countInStock}
+                            onChange={(e) => setCountInStock(e.target.value)}
+                            required
+                        />
+                    </div>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="price">
                     <Form.Label>Price</Form.Label>
-                    <Form.Control
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        required
-                    />
+                    <div className="short-div-price">
+                        <Form.Control
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            required
+                        />
+                    </div>
                 </Form.Group>
 
                 <div className="mb-3">

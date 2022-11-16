@@ -44,25 +44,27 @@ export function CartScreen() {
         error: '',
     });
 
-    //const [name, setName] = useState('');
+    const [dateSale, setDateSale] = useState('');
     const [refnum, setRefNum] = useState('');
     const [price, setPrice] = useState('');
-    //const [image, setImage] = useState('');
-    //const [description, setDescription] = useState('');
+    const [docUser, setDocUser] = useState('');
+    const [quantity, setQuantity] = useState('');
     //const [countInStock, setCountInStock] = useState('');
 
     const checkoutHandler = async (e) => {
         e.preventDefault();
-        alert('Compra realizada con exito.');
+        //alert('Compra realizada con exito.');
         try {
             dispatch({ type: 'UPDATE_REQUEST' });
             await axios.post(
                 `/api/sales`,
                 {
-                    //name,
-                    refnum,
-                    price,
-                    //image,
+                    price: cartItems.reduce,
+
+                    descriptionSale: {
+                        refnum: cartItems.refnum,
+                        quantity: cartItems.quantity,
+                    },
                     //countInStock,
                     //description,
                 },
@@ -95,6 +97,11 @@ export function CartScreen() {
 
     const removeItemHandler = (item) => {
         ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+    };
+
+    const clearHandler = () => {
+        ctxDispatch({ type: 'CART_CLEAR' });
+        localStorage.removeItem('userInfo');
     };
 
     /*
@@ -142,9 +149,7 @@ export function CartScreen() {
                                             >
                                                 {/*Boton para
                         restar productos*/}
-                                                <i className="fas fa-minus-circle">
-                                                    -
-                                                </i>
+                                                <i className="fas fa-minus-circle"></i>
                                             </Button>{' '}
                                             <span>{item.quantity}</span>{' '}
                                             <Button
@@ -161,20 +166,10 @@ export function CartScreen() {
                                                 }
                                             >
                                                 {/*Boton para sumar productos*/}
-                                                <i className="fas fa-plus-circle">
-                                                    +
-                                                </i>
+                                                <i className="fas fa-plus-circle"></i>
                                             </Button>
                                         </Col>
-                                        <Col
-                                            md={3}
-                                            value={item.price}
-                                            onChange={(e) =>
-                                                setPrice(e.target.value)
-                                            }
-                                        >
-                                            ${item.price}
-                                        </Col>
+                                        <Col md={3}>$ {item.price}</Col>
                                         <Col md={2}>
                                             {/*Boton para
                         eliminar productos*/}
@@ -184,9 +179,7 @@ export function CartScreen() {
                                                 }
                                                 variant="light"
                                             >
-                                                <i className="fas fa-trash">
-                                                    D
-                                                </i>
+                                                <i className="fas fa-trash"></i>
                                             </Button>
                                         </Col>
                                     </Row>
@@ -201,12 +194,12 @@ export function CartScreen() {
                             <ListGroup variant="flush">
                                 <ListGroup.Item>
                                     <h3>
-                                        Total (
+                                        Total:&nbsp;
                                         {cartItems.reduce(
                                             (a, c) => a + c.quantity,
                                             0
                                         )}{' '}
-                                        articulo(s)) : <br />${' '}
+                                        articulo(s) <br />${' '}
                                         {cartItems.reduce(
                                             (a, c) => a + c.price * c.quantity,
                                             0
@@ -222,6 +215,18 @@ export function CartScreen() {
                                             disabled={cartItems.length === 0}
                                         >
                                             Comprar
+                                        </Button>
+                                    </div>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <div className="d-grid">
+                                        <Button
+                                            onClick={clearHandler}
+                                            type="button"
+                                            variant="primary"
+                                            disabled={cartItems.length === 0}
+                                        >
+                                            Vaciar carrito
                                         </Button>
                                     </div>
                                 </ListGroup.Item>
