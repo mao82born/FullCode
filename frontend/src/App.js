@@ -34,7 +34,12 @@ function App() {
                     <Navbar className="bg-nav-color">
                         <Container>
                             <LinkContainer to="/">
-                                <Navbar.Brand>FullGames</Navbar.Brand>
+                                <Navbar.Brand>
+                                    <img
+                                        src="../FullGames_logo.png"
+                                        alt="logo_fullgames"
+                                    ></img>
+                                </Navbar.Brand>
                             </LinkContainer>
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="me-auto  w-100  justify-content-end">
