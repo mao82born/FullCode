@@ -5,18 +5,6 @@ import expressAsyncHandler from 'express-async-handler';
 
 export const salesRouter = express.Router();
 
-/*
-salesRouter.get(
-    '/',
-    isAuth,
-    isAdmin,
-    expressAsyncHandler(async (req, res) => {
-        const sales = await Sale.find();
-        console.log(sales);
-        res.send(sales);
-    })
-);*/
-
 salesRouter.get('/', async (req, res) => {
     const sales = await Sale.find();
     //console.log(sales);
@@ -38,5 +26,6 @@ salesRouter.post(
         });
         const sale = await newSale.save();
         res.send({ message: 'Nueva venta registrada.', sale });
+        console.log(newSale);
     })
 );
