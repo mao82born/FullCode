@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 
+//Oculta contraseña del login
 export const generateToken = (user) => {
     return jwt.sign(
         {
@@ -15,6 +16,7 @@ export const generateToken = (user) => {
     );
 };
 
+//Verifica que el usuario está autenticado
 export const isAuth = (req, res, next) => {
     const authorization = req.headers.authorization;
     if (authorization) {
@@ -36,6 +38,7 @@ export const isAuth = (req, res, next) => {
     }
 };
 
+//Verifica si el usuario es administrador
 export const isAdmin = (req, res, next) => {
     if (req.user && req.user.isAdmin) {
         next();

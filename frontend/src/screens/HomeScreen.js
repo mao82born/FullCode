@@ -58,6 +58,7 @@ export function HomeScreen() {
                                 lg={3}
                                 className="mb-3"
                             >
+                                {/**Llama al componente Product.js */}
                                 <Product product={product}></Product>
                             </Col>
                         ))}

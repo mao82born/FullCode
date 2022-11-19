@@ -70,6 +70,7 @@ export default function ProductNewScreen() {
         fetchData();
     }, [productId]);*/
 
+    //Crear nuevo producto
     const createHandler = async (e) => {
         e.preventDefault();
         try {

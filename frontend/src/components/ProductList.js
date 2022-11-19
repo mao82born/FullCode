@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useContext, useEffect, useReducer } from 'react';
 import { Store } from '../Store';
 
+//Visualiza la lista de productos para el administrador
 const reducer = (state, action) => {
     switch (action.type) {
         case 'FETCH_REQUEST':
