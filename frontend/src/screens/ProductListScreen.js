@@ -55,29 +55,6 @@ export function ProductListScreen() {
         fetchData();
     }, []);
 
-    const createHandler = async () => {
-        if (window.confirm('¿Quieres crear un producto?')) {
-            try {
-                dispatch({ type: 'CREATE_REQUEST' });
-                const { data } = await axios.post(
-                    '/api/products',
-                    {},
-                    {
-                        headers: { Authorization: `Bearer ${userInfo.token}` },
-                    }
-                );
-                //toast.success('product created successfully');
-                dispatch({ type: 'CREATE_SUCCESS' });
-                navigate(`/admin/product/${data.product._id}`);
-            } catch (err) {
-                //toast.error(getError(error));
-                dispatch({
-                    type: 'CREATE_FAIL',
-                });
-            }
-        }
-    };
-
     return (
         <div>
             <Row>

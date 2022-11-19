@@ -48,6 +48,7 @@ export default function ProductEditScreen() {
     const [description, setDescription] = useState('');
     const [countInStock, setCountInStock] = useState('');
 
+    //Capturar los datos del producto
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -70,6 +71,7 @@ export default function ProductEditScreen() {
         fetchData();
     }, [productId]);
 
+    //Envia los dato al backend para modificar el producto
     const submitHandler = async (e) => {
         e.preventDefault();
         try {

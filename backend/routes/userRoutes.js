@@ -5,6 +5,7 @@ import { generateToken } from '../utils.js';
 
 export const userRouter = express.Router();
 
+//Validación del usuario, si es cliente, admin o no existe
 userRouter.post(
     '/signin',
     expressAsyncHandler(async (req, res) => {

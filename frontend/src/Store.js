@@ -2,6 +2,7 @@ import { createContext, useReducer } from 'react';
 
 export const Store = createContext();
 
+//Guarda datos de usuario y productos para que no se borren al actualizar
 const initialState = {
     userInfo: localStorage.getItem('userInfo')
         ? JSON.parse(localStorage.getItem('userInfo'))

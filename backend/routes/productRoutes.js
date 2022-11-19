@@ -5,11 +5,15 @@ import expressAsyncHandler from 'express-async-handler';
 
 export const productRouter = express.Router();
 
+//Operaciones CRUD de los productos
+
+//Listar productos
 productRouter.get('/', async (req, res) => {
     const products = await Product.find();
     res.send(products);
 });
 
+//Visualiza un producto y sus detalles al dar clic
 productRouter.get('/refnum/:refnum', async (req, res) => {
     const product = await Product.findOne({ refnum: req.params.refnum });
     if (product) {
@@ -19,6 +23,7 @@ productRouter.get('/refnum/:refnum', async (req, res) => {
     }
 });
 
+//Añadir el producto al carrito
 productRouter.get('/:refnum', async (req, res) => {
     const product = await Product.findById(req.params.refnum);
     if (product) {
@@ -28,6 +33,7 @@ productRouter.get('/:refnum', async (req, res) => {
     }
 });
 
+//Modificar un producto
 productRouter.put(
     '/:id',
     isAuth,
@@ -50,6 +56,7 @@ productRouter.put(
     })
 );
 
+//Crear nuevo producto
 productRouter.post(
     '/',
     isAuth,
@@ -68,6 +75,7 @@ productRouter.post(
     })
 );
 
+//Eliminar un producto
 productRouter.delete(
     '/:id',
     isAuth,

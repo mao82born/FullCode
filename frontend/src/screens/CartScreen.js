@@ -51,6 +51,7 @@ export function CartScreen() {
     const [quantity, setQuantity] = useState('');
     //const [countInStock, setCountInStock] = useState('');
 
+    //Añadir la venta del carrito a la base de datos
     const checkoutHandler = async (e) => {
         e.preventDefault();
         //alert('Compra realizada con exito.');
@@ -83,6 +84,7 @@ export function CartScreen() {
         }
     };
 
+    //Aumentar cantidad del producto a comprar
     const updateCartHandler = async (item, quantity) => {
         const { data } = await axios.get(`/api/products/${item._id}`);
         if (data.countInStock < quantity) {
@@ -95,19 +97,16 @@ export function CartScreen() {
         });
     };
 
+    //Disminuir cantidad del producto a comprar
     const removeItemHandler = (item) => {
         ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
     };
 
+    //Vaciar el carrito
     const clearHandler = () => {
         ctxDispatch({ type: 'CART_CLEAR' });
         localStorage.removeItem('userInfo');
     };
-
-    /*
-    const checkoutHandler = () => {
-        navigate('/signin?redirect=/shipping');
-    };*/
 
     return (
         <div>
@@ -137,6 +136,7 @@ export function CartScreen() {
                                             </Link>
                                         </Col>
                                         <Col md={3}>
+                                            {/*Botón para restar cantidad producto*/}
                                             <Button
                                                 onClick={() =>
                                                     updateCartHandler(
@@ -147,8 +147,7 @@ export function CartScreen() {
                                                 variant="light"
                                                 disabled={item.quantity === 1}
                                             >
-                                                {/*Boton para
-                        restar productos*/}
+                                                {/*Boton para sumar productos*/}
                                                 <i className="fas fa-minus-circle"></i>
                                             </Button>{' '}
                                             <span>{item.quantity}</span>{' '}
@@ -165,14 +164,12 @@ export function CartScreen() {
                                                     item.countInStock
                                                 }
                                             >
-                                                {/*Boton para sumar productos*/}
                                                 <i className="fas fa-plus-circle"></i>
                                             </Button>
                                         </Col>
                                         <Col md={3}>$ {item.price}</Col>
                                         <Col md={2}>
-                                            {/*Boton para
-                        eliminar productos*/}
+                                            {/*Boton para eliminar productos del carrito*/}
                                             <Button
                                                 onClick={() =>
                                                     removeItemHandler(item)
@@ -188,6 +185,7 @@ export function CartScreen() {
                         </ListGroup>
                     )}
                 </Col>
+                {/**Total articulos y valor total de los productos */}
                 <Col md={4}>
                     <Card>
                         <Card.Body>
@@ -208,6 +206,7 @@ export function CartScreen() {
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                     <div className="d-grid">
+                                        {/**Botón de compra */}
                                         <Button
                                             onClick={checkoutHandler}
                                             type="button"
@@ -220,6 +219,7 @@ export function CartScreen() {
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                     <div className="d-grid">
+                                        {/**Botón vaciar carrito */}
                                         <Button
                                             onClick={clearHandler}
                                             type="button"

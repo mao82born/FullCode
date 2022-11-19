@@ -5,12 +5,14 @@ import expressAsyncHandler from 'express-async-handler';
 
 export const salesRouter = express.Router();
 
+//Listar ventas
 salesRouter.get('/', async (req, res) => {
     const sales = await Sale.find();
     //console.log(sales);
     res.send(sales);
 });
 
+//Nueva venta
 salesRouter.post(
     '/',
     isAuth,

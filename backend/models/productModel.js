@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+//Creación de la tabla de los productos
 const productSchema = new mongoose.Schema(
     {
         refnum: { type: String, required: true, unique: true },
@@ -8,7 +9,6 @@ const productSchema = new mongoose.Schema(
         description: { type: String, required: true },
         price: { type: Number, required: true },
         countInStock: { type: Number, required: true },
-        //slug: { type: String, required: true, unique: true },
     },
     {
         timestamps: true,

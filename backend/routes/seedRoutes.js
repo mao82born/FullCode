@@ -8,6 +8,7 @@ import { dataSales } from '../dataSales.js';
 
 const seedRouter = express.Router();
 
+//Cargar productos, usuarios y ventas la primera vez a mongodb desde locahost:5000/api/seed
 seedRouter.get('/', async (req, res) => {
     await Product.remove({});
     const createdProducts = await Product.insertMany(data.products);
