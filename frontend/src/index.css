@@ -75,6 +75,14 @@ main {
     object-fit: cover;
 }
 
+.icon {
+    width: 24px;
+}
+
+.icon-mini {
+    width: 20px;
+}
+
 .small-container {
     max-width: 600px;
     justify-content: center;
