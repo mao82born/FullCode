@@ -148,7 +148,11 @@ export function CartScreen() {
                                                 disabled={item.quantity === 1}
                                             >
                                                 {/*Boton para sumar productos*/}
-                                                <i className="fas fa-minus-circle"></i>
+                                                <img
+                                                    src="../boton-menos.png"
+                                                    alt="logo_fullgames"
+                                                    className="icon-mini"
+                                                ></img>
                                             </Button>{' '}
                                             <span>{item.quantity}</span>{' '}
                                             <Button
@@ -164,7 +168,11 @@ export function CartScreen() {
                                                     item.countInStock
                                                 }
                                             >
-                                                <i className="fas fa-plus-circle"></i>
+                                                <img
+                                                    src="../boton-mas.png"
+                                                    alt="logo_fullgames"
+                                                    className="icon-mini"
+                                                ></img>
                                             </Button>
                                         </Col>
                                         <Col md={3}>$ {item.price}</Col>
@@ -176,7 +184,11 @@ export function CartScreen() {
                                                 }
                                                 variant="light"
                                             >
-                                                <i className="fas fa-trash"></i>
+                                                <img
+                                                    src="../basura.png"
+                                                    alt="logo_fullgames"
+                                                    className="icon-mini"
+                                                ></img>
                                             </Button>
                                         </Col>
                                     </Row>
