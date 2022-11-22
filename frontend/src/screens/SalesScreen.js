@@ -69,7 +69,7 @@ export default function SalesScreen() {
                             <tr key={order._id}>
                                 <td>{order._id}</td>
                                 <td>{order.dateSale}</td>
-                                <td>{order.price}</td>
+                                <td>${order.price}</td>
                                 <td></td>
                             </tr>
                         ))}
